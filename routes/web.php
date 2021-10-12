@@ -39,4 +39,32 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/', 'Admin\AdminController@home');
+Route::get('/redirect/{service}', 'SocialController@redirect');
+
+Route::get('/callback/{service}', 'SocialController@callback');
+Route::get('/faillbal', 'Crudcontroller@get');
+
+
+
+
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]],function (){
+
+Route::group(['prefix'=>'offers',],function (){
+    //Route::get('store', 'Crudcontroller@store');
+
+
+    Route::get('create', 'Crudcontroller@create');
+
+
+
+
+    Route::post('store', 'Crudcontroller@store')->name('store');
+
+
+});
+});
+
+
 

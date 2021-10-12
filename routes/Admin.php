@@ -59,4 +59,4 @@ Route::get('/login',function (){
 //Route::get('login','Admin\AdminController@login')->name('login');
 Route::get('login','Admin\FirstController@login')->name('login');
 */
-Route::resource('news','Newscontroller');
+Route::resource('news','Crudcontroller');
